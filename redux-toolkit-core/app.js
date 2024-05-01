@@ -4,7 +4,7 @@ const initialState = {
   count: 0,
 }
 
-//Create acriotn
+//Create action
 const increment = createAction('INCREMENT')
 const decrement = createAction('DEREMENT')
 const resetCounter = createAction('RESET')
