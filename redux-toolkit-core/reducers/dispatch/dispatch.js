@@ -17,7 +17,6 @@ const increment_by = createAction('INCREMENT_BY', (amount) => {
 })
 
 // == CREATE REDUCER ==
-
 const counterBuilderCallbackNotationSlice = createReducer(
   initialState,
   (builder) => {
@@ -32,14 +31,9 @@ const counterBuilderCallbackNotationSlice = createReducer(
 
 //== CREATE STORE ==
 const store = configureStore({
-  reducer: counterBuilderCallbackNotationSlice,
+  reducer: counterMapObjectNotationSlice,
 })
 
 //== DISPATCH ACTION ==
-store.dispatch(increment()) //1
-store.dispatch(increment()) //2
-store.dispatch(increment()) //3
-console.log(store.getState())
-
-store.dispatch(increment_by(20)) //23
+store.dispatch(increment())
 console.log(store.getState())

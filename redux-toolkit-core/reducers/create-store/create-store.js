@@ -1,8 +1,4 @@
-const {
-  createAction,
-  createReducer,
-  configureStore,
-} = require('@reduxjs/toolkit')
+const { createAction, createReducer } = require('@reduxjs/toolkit')
 
 const initialState = {
   count: 0,
@@ -17,6 +13,14 @@ const increment_by = createAction('INCREMENT_BY', (amount) => {
 })
 
 // == CREATE REDUCER ==
+const counterMapObjectNotationSlice = createAction(initialState, {
+  [increment]: (state) => {
+    state.count += 1
+  },
+  [increment_by]: (state, action) => {
+    state.count += action.payload.amount
+  },
+})
 
 const counterBuilderCallbackNotationSlice = createReducer(
   initialState,
@@ -24,6 +28,7 @@ const counterBuilderCallbackNotationSlice = createReducer(
     builder.addCase(increment, (state) => {
       state.count += 1
     })
+
     builder.addCase(increment_by, (state, action) => {
       state.count += action.payload.amount
     })
@@ -32,14 +37,6 @@ const counterBuilderCallbackNotationSlice = createReducer(
 
 //== CREATE STORE ==
 const store = configureStore({
-  reducer: counterBuilderCallbackNotationSlice,
+  reducer: counterMapObjectNotationSlice,
+  counterBuilderCallbackNotationSlice,
 })
-
-//== DISPATCH ACTION ==
-store.dispatch(increment()) //1
-store.dispatch(increment()) //2
-store.dispatch(increment()) //3
-console.log(store.getState())
-
-store.dispatch(increment_by(20)) //23
-console.log(store.getState())

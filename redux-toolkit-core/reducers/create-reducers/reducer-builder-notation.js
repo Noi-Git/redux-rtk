@@ -1,18 +1,19 @@
-const { createAction, nanoid, createReducer } = require('@reduxjs/toolkit')
+const { createAction, createReducer } = require('@reduxjs/toolkit')
 
 const initialState = {
   count: 0,
 }
-
 //== CREATE ACTION ==
 const increment = createAction('INCREMENT')
 const decrement = createAction('DEREMENT')
 const reset = createAction('RESET')
-const increment_by = createAction('INCREMENT_BY')
-// console.log(incrementBy(20, 'Emma'))
+const increment_by = createAction('INCREMENT_BY', (amount) => {
+  return {
+    payload: { amount },
+  }
+})
 
 // == CREATE REDUCER ==
-//Builder callback notation
 createReducer(initialState, (builder) => {
   builder.addCase(increment, (state) => {
     state.count += 1
