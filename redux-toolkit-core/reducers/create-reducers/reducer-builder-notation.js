@@ -8,17 +8,7 @@ const initialState = {
 const increment = createAction('INCREMENT')
 const decrement = createAction('DEREMENT')
 const reset = createAction('RESET')
-
-//pass additional data
-const increment_by = createAction('INCREMENT_BY', (amount, user) => {
-  return {
-    payload: {
-      amount,
-      user,
-      id: nanoid(), //random number
-    },
-  }
-})
+const increment_by = createAction('INCREMENT_BY')
 // console.log(incrementBy(20, 'Emma'))
 
 // == CREATE REDUCER ==
