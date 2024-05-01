@@ -31,9 +31,14 @@ const counterBuilderCallbackNotationSlice = createReducer(
 
 //== CREATE STORE ==
 const store = configureStore({
-  reducer: counterMapObjectNotationSlice,
+  reducer: counterBuilderCallbackNotationSlice,
 })
 
 //== DISPATCH ACTION ==
-store.dispatch(increment())
+store.dispatch(increment()) //1
+store.dispatch(increment()) //2
+store.dispatch(increment()) //3
+console.log(store.getState())
+
+store.dispatch(increment_by(20)) //23
 console.log(store.getState())
