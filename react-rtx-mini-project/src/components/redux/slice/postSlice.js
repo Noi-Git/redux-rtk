@@ -6,7 +6,7 @@ import apiURL from '../../utils/apiURL'
 const initialState = {
   posts: [],
   loading: false,
-  error: undefined,
+  error: '',
 }
 
 //actions
