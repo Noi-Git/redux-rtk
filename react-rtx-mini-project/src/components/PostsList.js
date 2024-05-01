@@ -1,8 +1,19 @@
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import SearchPost from './SearchPost'
 import './Posts.css'
+import { fetchPosts } from './redux/slice/postSlice'
 
 const PostsList = () => {
+  // useSelector = grab data out of the store
+  // useDispatch = send data to the store
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    //when the componet first load - and successful -get all the data from the api
+    dispatch(fetchPosts())
+  }, [dispatch])
+
   return (
     <>
       <SearchPost />

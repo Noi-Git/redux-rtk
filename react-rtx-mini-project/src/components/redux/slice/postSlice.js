@@ -10,10 +10,18 @@ const initialState = {
 }
 
 //actions
-const fetchPosts = createAsyncThunk('posts/fetch', async () => {
-  const res = await axios.get(apiURL)
-  return res.data
-})
+export const fetchPosts = createAsyncThunk(
+  'posts/fetch',
+  async (payload, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const res = await axios.get(apiURL)
+      return res.data
+    } catch (error) {
+      console.log(error)
+      return rejectWithValue(error.response.status)
+    }
+  }
+)
 
 //slice
 const postsSlice = createSlice({
