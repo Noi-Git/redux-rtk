@@ -34,7 +34,7 @@ const PostsList = () => {
         {loading ? (
           <h2>Loading...</h2>
         ) : error ? (
-          <h2>{error}</h2>
+          <h2 style={{ color: 'red' }}>{error}</h2>
         ) : (
           posts.map((post) => {
             return (
